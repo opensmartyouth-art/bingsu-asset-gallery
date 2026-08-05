@@ -252,14 +252,21 @@
         files.forEach(f => {
           const card = document.createElement('div');
           card.className = 'card bg-card border border-border rounded-lg overflow-hidden';
+          const imgUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/assets/2d/${f.name}`;
+          const stem   = f.name.replace(/\.[^.]+$/, '');
           card.innerHTML = `
             <div class="aspect-square bg-muted/50 overflow-hidden">
-              <img src="https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/assets/2d/${f.name}"
-                alt="${f.name}" loading="lazy" class="w-full h-full object-contain p-3">
+              <img src="${imgUrl}" alt="${stem}" loading="lazy" class="w-full h-full object-contain p-3">
             </div>
             <div class="p-3 space-y-2">
               <span class="text-[10px] font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">2D</span>
-              <p class="text-xs font-medium text-card-foreground break-all leading-snug">${f.name.replace(/\.[^.]+$/, '')}</p>
+              <p class="text-xs font-medium text-card-foreground break-all leading-snug">${stem}</p>
+              <a href="${imgUrl}" download class="flex items-center justify-center gap-1 w-full bg-primary text-primary-foreground text-xs font-medium py-1.5 rounded-md hover:opacity-80 transition-opacity">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                다운로드
+              </a>
             </div>`;
           grid2d.appendChild(card);
         });

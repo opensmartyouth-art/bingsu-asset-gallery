@@ -4,2128 +4,240 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>빙수 월드 투어 — 에셋 갤러리</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            border: 'hsl(214.3 31.8% 91.4%)',
+            input: 'hsl(214.3 31.8% 91.4%)',
+            background: 'hsl(0 0% 100%)',
+            foreground: 'hsl(0 0% 3.9%)',
+            primary: {
+              DEFAULT: 'hsl(0 0% 9%)',
+              foreground: 'hsl(0 0% 98%)',
+            },
+            secondary: {
+              DEFAULT: 'hsl(0 0% 96.1%)',
+              foreground: 'hsl(0 0% 9%)',
+            },
+            muted: {
+              DEFAULT: 'hsl(0 0% 96.1%)',
+              foreground: 'hsl(0 0% 45.1%)',
+            },
+            card: {
+              DEFAULT: 'hsl(0 0% 100%)',
+              foreground: 'hsl(0 0% 3.9%)',
+            },
+          },
+          borderRadius: {
+            lg: '0.5rem',
+            md: '0.375rem',
+            sm: '0.25rem',
+          },
+        },
+      },
+    }
+  </script>
   <style>
-    :root {
-      --md-sys-color-surface: #FFFBFE;
-      --md-sys-color-surface-variant: #E7E0EC;
-      --md-sys-color-on-surface: #1C1B1F;
-      --md-sys-color-on-surface-variant: #49454F;
-      --md-sys-color-primary: #6750A4;
-      --md-sys-color-on-primary: #FFFFFF;
-      --md-sys-color-outline: #79747E;
-      --md-sys-elevation-1: 0px 1px 2px rgba(0,0,0,0.3), 0px 1px 3px 1px rgba(0,0,0,0.15);
-      --md-sys-elevation-2: 0px 1px 2px rgba(0,0,0,0.3), 0px 2px 6px 2px rgba(0,0,0,0.15);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: var(--md-sys-color-surface);
-      color: var(--md-sys-color-on-surface);
-    }
-    header {
-      padding: 24px 32px;
-      background: var(--md-sys-color-surface);
-      border-bottom: 1px solid var(--md-sys-color-surface-variant);
-    }
-    header h1 { font-size: 22px; font-weight: 600; }
-    header p { font-size: 14px; color: var(--md-sys-color-on-surface-variant); margin-top: 4px; }
-    main { padding: 32px; max-width: 1200px; margin: 0 auto; }
-    .section { margin-bottom: 48px; }
-    .section-title {
-      font-size: 16px; font-weight: 600;
-      color: var(--md-sys-color-on-surface-variant);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--md-sys-color-surface-variant);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    /* M3 Outlined Card */
-    .card {
-      border: 1px solid var(--md-sys-color-outline);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--md-sys-color-surface);
-      transition: box-shadow 0.2s;
-    }
-    .card:hover {
-      box-shadow: var(--md-sys-elevation-2);
-    }
-    .card-media {
-      width: 100%;
-      aspect-ratio: 1;
-      background: var(--md-sys-color-surface-variant);
-      overflow: hidden;
-    }
-    .card-media img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      padding: 12px;
-    }
-    .card-content {
-      padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .file-name {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--md-sys-color-on-surface);
-      word-break: break-all;
-    }
-    .download-btn {
-      display: inline-block;
-      padding: 6px 12px;
-      background: var(--md-sys-color-primary);
-      color: var(--md-sys-color-on-primary);
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 500;
-      text-decoration: none;
-      text-align: center;
-      transition: opacity 0.2s;
-    }
-    .download-btn:hover { opacity: 0.85; }
-    .no-glb {
-      font-size: 11px;
-      color: var(--md-sys-color-on-surface-variant);
-    }
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      main { padding: 16px; }
-    }
+    body { font-family: 'Noto Sans KR', sans-serif; }
+    .card { transition: box-shadow 0.15s, transform 0.15s; }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    input[type=checkbox] { accent-color: hsl(0 0% 9%); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: hsl(214.3 31.8% 85%); border-radius: 4px; }
   </style>
 </head>
-<body>
-  <header>
-    <h1>🍧 빙수 월드 투어 — 에셋 갤러리</h1>
-    <p>사물 에셋 모음 · 썸네일 클릭 후 GLB 다운로드</p>
+<body class="min-h-screen bg-background text-foreground">
+
+  <!-- Header (fixed) -->
+  <header class="fixed top-0 left-0 right-0 z-20 bg-background border-b border-border px-8 py-4 flex items-center justify-between">
+    <div>
+      <h1 class="text-lg font-semibold tracking-tight">🍧 빙수 월드 투어 — 에셋 갤러리</h1>
+      <p class="text-sm text-muted-foreground mt-0.5">사물 에셋 모음 · GLB 다운로드</p>
+    </div>
+    <span id="header-count" class="text-sm text-muted-foreground"></span>
   </header>
-  <main>
-      <section class="section">
-        <h2 class="section-title">COMMON</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_cherry_blossom_bg.png" alt="event_cherry_blossom_bg" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_cherry_blossom_bg</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_cherry_blossom_bg.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_cherry_blossom_counter.png" alt="event_cherry_blossom_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_cherry_blossom_counter</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_cherry_blossom_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_halloween_bg.png" alt="event_halloween_bg" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_halloween_bg</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_halloween_bg.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_halloween_counter.png" alt="event_halloween_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_halloween_counter</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_halloween_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_strawberry_bg.png" alt="event_strawberry_bg" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_strawberry_bg</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_strawberry_bg.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_strawberry_counter.png" alt="event_strawberry_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_strawberry_counter</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_strawberry_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_event_umbrella_table.png" alt="event_umbrella_table" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">event_umbrella_table</span>
-            <a class="download-btn" href="assets/COMMON_사물_event_umbrella_table.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_feature_graphic.png" alt="feature_graphic" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">feature_graphic</span>
-            <a class="download-btn" href="assets/COMMON_사물_feature_graphic.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_bingsu_box.png" alt="food_bingsu_box" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_bingsu_box</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_bingsu_box.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_event_halloween.png" alt="food_event_halloween" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_event_halloween</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_event_halloween.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_event_strawberry.png" alt="food_event_strawberry" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_event_strawberry</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_event_strawberry.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_macaron_bingsu.png" alt="food_macaron_bingsu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_macaron_bingsu</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_macaron_bingsu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_mango_bingsu.png" alt="food_mango_bingsu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_mango_bingsu</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_mango_bingsu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_matcha_bingsu.png" alt="food_matcha_bingsu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_matcha_bingsu</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_matcha_bingsu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_patbingsu.png" alt="food_patbingsu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_patbingsu</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_patbingsu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_food_tiramisu_bingsu.png" alt="food_tiramisu_bingsu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">food_tiramisu_bingsu</span>
-            <a class="download-btn" href="assets/COMMON_사물_food_tiramisu_bingsu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_currency_display.png" alt="hud_currency_display" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_currency_display</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_currency_display.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_jelly_display.png" alt="hud_jelly_display" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_jelly_display</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_jelly_display.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_level_badge.png" alt="hud_level_badge" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_level_badge</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_level_badge.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_map_btn.png" alt="hud_map_btn" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_map_btn</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_map_btn.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_settings_btn.png" alt="hud_settings_btn" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_settings_btn</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_settings_btn.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_stage_flag.png" alt="hud_stage_flag" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_stage_flag</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_stage_flag.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_hud_xp_progress_bar.png" alt="hud_xp_progress_bar" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">hud_xp_progress_bar</span>
-            <a class="download-btn" href="assets/COMMON_사물_hud_xp_progress_bar.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_icon_app.png" alt="icon_app" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">icon_app</span>
-            <a class="download-btn" href="assets/COMMON_사물_icon_app.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_clean_bot.png" alt="item_clean_bot" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_clean_bot</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_clean_bot.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_coin_bag.png" alt="item_coin_bag" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_coin_bag</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_coin_bag.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_euro.png" alt="item_euro" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_euro</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_euro.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_euro_bill.png" alt="item_euro_bill" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_euro_bill</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_euro_bill.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_jelly_3d.png" alt="item_jelly_3d" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_jelly_3d</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_jelly_3d.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_jelly_icon.png" alt="item_jelly_icon" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_jelly_icon</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_jelly_icon.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_kickboard.png" alt="item_kickboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_kickboard</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_kickboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_money_fly_vfx.png" alt="item_money_fly_vfx" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_money_fly_vfx</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_money_fly_vfx.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_ntd.png" alt="item_ntd" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_ntd</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_ntd.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_ntd_bill.png" alt="item_ntd_bill" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_ntd_bill</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_ntd_bill.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_won.png" alt="item_won" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_won</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_won.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_won_bill.png" alt="item_won_bill" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_won_bill</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_won_bill.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_yen.png" alt="item_yen" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_yen</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_yen.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_item_yen_bill.png" alt="item_yen_bill" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">item_yen_bill</span>
-            <a class="download-btn" href="assets/COMMON_사물_item_yen_bill.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_airplane_anim.png" alt="map_airplane_anim" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_airplane_anim</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_airplane_anim.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_france.png" alt="map_node_france" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_france</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_france.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_italy.png" alt="map_node_italy" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_italy</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_italy.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_japan.png" alt="map_node_japan" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_japan</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_japan.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_korea.png" alt="map_node_korea" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_korea</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_korea.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_locked.png" alt="map_node_locked" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_locked</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_locked.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_node_taiwan.png" alt="map_node_taiwan" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_node_taiwan</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_node_taiwan.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_path_line.png" alt="map_path_line" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_path_line</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_path_line.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_map_world_bg.png" alt="map_world_bg" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">map_world_bg</span>
-            <a class="download-btn" href="assets/COMMON_사물_map_world_bg.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_bingsu_pass.png" alt="popup_bingsu_pass" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_bingsu_pass</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_bingsu_pass.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_double_reward.png" alt="popup_double_reward" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_double_reward</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_double_reward.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_event_start.png" alt="popup_event_start" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_event_start</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_event_start.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_growth_offer.png" alt="popup_growth_offer" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_growth_offer</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_growth_offer.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_levelup.png" alt="popup_levelup" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_levelup</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_levelup.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_mission.png" alt="popup_mission" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_mission</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_mission.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_new_stage.png" alt="popup_new_stage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_new_stage</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_no_currency.png" alt="popup_no_currency" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_no_currency</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_no_currency.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_offline_reward.png" alt="popup_offline_reward" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_offline_reward</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_offline_reward.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_shop.png" alt="popup_shop" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_shop</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_shop.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_stage_transition.png" alt="popup_stage_transition" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_stage_transition</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_stage_transition.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_popup_vip_subscription.png" alt="popup_vip_subscription" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">popup_vip_subscription</span>
-            <a class="download-btn" href="assets/COMMON_사물_popup_vip_subscription.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_screenshot_world_map.png" alt="screenshot_world_map" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">screenshot_world_map</span>
-            <a class="download-btn" href="assets/COMMON_사물_screenshot_world_map.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_booster_banner.png" alt="ui_booster_banner" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_booster_banner</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_booster_banner.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_booster_icon_capacity.png" alt="ui_booster_icon_capacity" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_booster_icon_capacity</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_booster_icon_capacity.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_booster_icon_cleanbot.png" alt="ui_booster_icon_cleanbot" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_booster_icon_cleanbot</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_booster_icon_cleanbot.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_booster_icon_money.png" alt="ui_booster_icon_money" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_booster_icon_money</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_booster_icon_money.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_booster_icon_speed.png" alt="ui_booster_icon_speed" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_booster_icon_speed</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_booster_icon_speed.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_btn_hire_ad.png" alt="ui_btn_hire_ad" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_btn_hire_ad</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_btn_hire_ad.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_btn_hire_free.png" alt="ui_btn_hire_free" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_btn_hire_free</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_btn_hire_free.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_btn_upgrade_ad.png" alt="ui_btn_upgrade_ad" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_btn_upgrade_ad</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_btn_upgrade_ad.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_btn_upgrade_currency.png" alt="ui_btn_upgrade_currency" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_btn_upgrade_currency</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_btn_upgrade_currency.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_btn_upgrade_jelly.png" alt="ui_btn_upgrade_jelly" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_btn_upgrade_jelly</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_btn_upgrade_jelly.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_hr_panel.png" alt="ui_hr_panel" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_hr_panel</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_hr_panel.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_tutorial_arrow.png" alt="ui_tutorial_arrow" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_tutorial_arrow</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_tutorial_arrow.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_tutorial_finger.png" alt="ui_tutorial_finger" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_tutorial_finger</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_tutorial_finger.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_tutorial_highlight.png" alt="ui_tutorial_highlight" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_tutorial_highlight</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_tutorial_highlight.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_tutorial_speech_bubble.png" alt="ui_tutorial_speech_bubble" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_tutorial_speech_bubble</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_tutorial_speech_bubble.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_upgrade_panel.png" alt="ui_upgrade_panel" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_upgrade_panel</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_upgrade_panel.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_upgrade_row.png" alt="ui_upgrade_row" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_upgrade_row</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_upgrade_row.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_worldmap_country_tooltip.png" alt="ui_worldmap_country_tooltip" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_worldmap_country_tooltip</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_worldmap_country_tooltip.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_worldmap_next_country_tease.png" alt="ui_worldmap_next_country_tease" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_worldmap_next_country_tease</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_worldmap_next_country_tease.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_worldmap_panel.png" alt="ui_worldmap_panel" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_worldmap_panel</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_worldmap_panel.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_worldmap_revenue_bar.png" alt="ui_worldmap_revenue_bar" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_worldmap_revenue_bar</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_worldmap_revenue_bar.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_ui_worldmap_revenue_btn.png" alt="ui_worldmap_revenue_btn" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">ui_worldmap_revenue_btn</span>
-            <a class="download-btn" href="assets/COMMON_사물_ui_worldmap_revenue_btn.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_bingsu_ready.png" alt="vfx_bingsu_ready" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_bingsu_ready</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_bingsu_ready.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_clean_bot_trail.png" alt="vfx_clean_bot_trail" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_clean_bot_trail</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_clean_bot_trail.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_confetti_stage_open.png" alt="vfx_confetti_stage_open" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_confetti_stage_open</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_confetti_stage_open.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_currency_collect_euro.png" alt="vfx_currency_collect_euro" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_currency_collect_euro</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_currency_collect_euro.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_currency_collect_ntd.png" alt="vfx_currency_collect_ntd" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_currency_collect_ntd</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_currency_collect_ntd.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_currency_collect_won.png" alt="vfx_currency_collect_won" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_currency_collect_won</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_currency_collect_won.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_currency_collect_yen.png" alt="vfx_currency_collect_yen" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_currency_collect_yen</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_currency_collect_yen.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_ice_shaving.png" alt="vfx_ice_shaving" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_ice_shaving</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_ice_shaving.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_jelly_collect.png" alt="vfx_jelly_collect" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_jelly_collect</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_jelly_collect.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_levelup_burst.png" alt="vfx_levelup_burst" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_levelup_burst</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_levelup_burst.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_money_collect.png" alt="vfx_money_collect" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_money_collect</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_money_collect.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_new_area_unlock.png" alt="vfx_new_area_unlock" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_new_area_unlock</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_new_area_unlock.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_speed_boost.png" alt="vfx_speed_boost" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_speed_boost</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_speed_boost.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_stage_transition.png" alt="vfx_stage_transition" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_stage_transition</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_stage_transition.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/COMMON_사물_vfx_upgrade_shine.png" alt="vfx_upgrade_shine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">vfx_upgrade_shine</span>
-            <a class="download-btn" href="assets/COMMON_사물_vfx_upgrade_shine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        </div>
-      </section>
-      <section class="section">
-        <h2 class="section-title">FR</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_billboard.png" alt="s5_billboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_billboard</span>
-            <a class="download-btn" href="assets/FR_사물_s5_billboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_bingsu_machine.png" alt="s5_bingsu_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_bingsu_machine</span>
-            <a class="download-btn" href="assets/FR_사물_s5_bingsu_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_cashier_desk.png" alt="s5_cashier_desk" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_cashier_desk</span>
-            <a class="download-btn" href="assets/FR_사물_s5_cashier_desk.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_chair.png" alt="s5_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_chair</span>
-            <a class="download-btn" href="assets/FR_사물_s5_chair.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_baguette_basket.png" alt="s5_deco_baguette_basket" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_baguette_basket</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_baguette_basket.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_bistro_chair.png" alt="s5_deco_bistro_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_bistro_chair</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_bistro_chair.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_chalkboard_menu.png" alt="s5_deco_chalkboard_menu" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_chalkboard_menu</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_chalkboard_menu.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_eiffel.png" alt="s5_deco_eiffel" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_eiffel</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_eiffel.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_flower_vase.png" alt="s5_deco_flower_vase" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_flower_vase</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_flower_vase.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_deco_lamp_post.png" alt="s5_deco_lamp_post" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_deco_lamp_post</span>
-            <a class="download-btn" href="assets/FR_사물_s5_deco_lamp_post.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_entrance_door.png" alt="s5_entrance_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_entrance_door</span>
-            <a class="download-btn" href="assets/FR_사물_s5_entrance_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_floor_tile.png" alt="s5_floor_tile" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_floor_tile</span>
-            <a class="download-btn" href="assets/FR_사물_s5_floor_tile.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_hr_room_sign.png" alt="s5_hr_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_hr_room_sign</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_macaron_maker.png" alt="s5_macaron_maker" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_macaron_maker</span>
-            <a class="download-btn" href="assets/FR_사물_s5_macaron_maker.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_restroom_door.png" alt="s5_restroom_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_restroom_door</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_rosewater_dispenser.png" alt="s5_rosewater_dispenser" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_rosewater_dispenser</span>
-            <a class="download-btn" href="assets/FR_사물_s5_rosewater_dispenser.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_signage.png" alt="s5_signage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_signage</span>
-            <a class="download-btn" href="assets/FR_사물_s5_signage.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_storage_rack.png" alt="s5_storage_rack" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_storage_rack</span>
-            <a class="download-btn" href="assets/FR_사물_s5_storage_rack.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_table_2seat.png" alt="s5_table_2seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_table_2seat</span>
-            <a class="download-btn" href="assets/FR_사물_s5_table_2seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_table_4seat.png" alt="s5_table_4seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_table_4seat</span>
-            <a class="download-btn" href="assets/FR_사물_s5_table_4seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_takeout_counter.png" alt="s5_takeout_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_takeout_counter</span>
-            <a class="download-btn" href="assets/FR_사물_s5_takeout_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_topping_station.png" alt="s5_topping_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_topping_station</span>
-            <a class="download-btn" href="assets/FR_사물_s5_topping_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_trash_bin.png" alt="s5_trash_bin" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_trash_bin</span>
-            <a class="download-btn" href="assets/FR_사물_s5_trash_bin.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_upgrade_room_sign.png" alt="s5_upgrade_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_upgrade_room_sign</span>
-            <a class="download-btn" href="assets/FR_사물_s5_upgrade_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/FR_사물_s5_wall.png" alt="s5_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s5_wall</span>
-            <a class="download-btn" href="assets/FR_사물_s5_wall.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        </div>
-      </section>
-      <section class="section">
-        <h2 class="section-title">IT</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_billboard.png" alt="s4_billboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_billboard</span>
-            <a class="download-btn" href="assets/IT_사물_s4_billboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_bingsu_machine.png" alt="s4_bingsu_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_bingsu_machine</span>
-            <a class="download-btn" href="assets/IT_사물_s4_bingsu_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_cashier_desk.png" alt="s4_cashier_desk" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_cashier_desk</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_chair.png" alt="s4_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_chair</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_arch_window.png" alt="s4_deco_arch_window" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_arch_window</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_arch_window.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_clothesline.png" alt="s4_deco_clothesline" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_clothesline</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_clothesline.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_colosseum.png" alt="s4_deco_colosseum" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_colosseum</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_colosseum.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_flower_pot_wall.png" alt="s4_deco_flower_pot_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_flower_pot_wall</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_flower_pot_wall.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_olive_tree.png" alt="s4_deco_olive_tree" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_olive_tree</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_olive_tree.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_deco_vespa.png" alt="s4_deco_vespa" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_deco_vespa</span>
-            <a class="download-btn" href="assets/IT_사물_s4_deco_vespa.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_entrance_door.png" alt="s4_entrance_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_entrance_door</span>
-            <a class="download-btn" href="assets/IT_사물_s4_entrance_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_espresso_machine.png" alt="s4_espresso_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_espresso_machine</span>
-            <a class="download-btn" href="assets/IT_사물_s4_espresso_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_floor_tile.png" alt="s4_floor_tile" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_floor_tile</span>
-            <a class="download-btn" href="assets/IT_사물_s4_floor_tile.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_hr_room_sign.png" alt="s4_hr_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_hr_room_sign</span>
-            <a class="download-btn" href="assets/IT_사물_s4_hr_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_mascarpone_station.png" alt="s4_mascarpone_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_mascarpone_station</span>
-            <a class="download-btn" href="assets/IT_사물_s4_mascarpone_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_restroom_door.png" alt="s4_restroom_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_restroom_door</span>
-            <a class="download-btn" href="assets/IT_사물_s4_restroom_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_signage.png" alt="s4_signage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_signage</span>
-            <a class="download-btn" href="assets/IT_사물_s4_signage.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_storage_rack.png" alt="s4_storage_rack" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_storage_rack</span>
-            <a class="download-btn" href="assets/IT_사물_s4_storage_rack.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_table_2seat.png" alt="s4_table_2seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_table_2seat</span>
-            <a class="download-btn" href="assets/IT_사물_s4_table_2seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_table_4seat.png" alt="s4_table_4seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_table_4seat</span>
-            <a class="download-btn" href="assets/IT_사물_s4_table_4seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_takeout_counter.png" alt="s4_takeout_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_takeout_counter</span>
-            <a class="download-btn" href="assets/IT_사물_s4_takeout_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_topping_station.png" alt="s4_topping_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_topping_station</span>
-            <a class="download-btn" href="assets/IT_사물_s4_topping_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_trash_bin.png" alt="s4_trash_bin" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_trash_bin</span>
-            <a class="download-btn" href="assets/IT_사물_s4_trash_bin.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_upgrade_room_sign.png" alt="s4_upgrade_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_upgrade_room_sign</span>
-            <a class="download-btn" href="assets/IT_사물_s4_upgrade_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/IT_사물_s4_wall.png" alt="s4_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s4_wall</span>
-            <a class="download-btn" href="assets/IT_사물_s4_wall.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        </div>
-      </section>
-      <section class="section">
-        <h2 class="section-title">JP</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_billboard.png" alt="s2_billboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_billboard</span>
-            <a class="download-btn" href="assets/JP_사물_s2_billboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_bingsu_machine.png" alt="s2_bingsu_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_bingsu_machine</span>
-            <a class="download-btn" href="assets/JP_사물_s2_bingsu_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_cashier_desk.png" alt="s2_cashier_desk" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_cashier_desk</span>
-            <a class="download-btn" href="assets/JP_사물_s2_cashier_desk.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_chair.png" alt="s2_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_chair</span>
-            <a class="download-btn" href="assets/JP_사물_s2_chair.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_deco_bamboo.png" alt="s2_deco_bamboo" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_deco_bamboo</span>
-            <a class="download-btn" href="assets/JP_사물_s2_deco_bamboo.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_deco_shoji_lamp.png" alt="s2_deco_shoji_lamp" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_deco_shoji_lamp</span>
-            <a class="download-btn" href="assets/JP_사물_s2_deco_shoji_lamp.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_deco_torii.png" alt="s2_deco_torii" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_deco_torii</span>
-            <a class="download-btn" href="assets/JP_사물_s2_deco_torii.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_deco_zabuton.png" alt="s2_deco_zabuton" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_deco_zabuton</span>
-            <a class="download-btn" href="assets/JP_사물_s2_deco_zabuton.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_entrance_door.png" alt="s2_entrance_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_entrance_door</span>
-            <a class="download-btn" href="assets/JP_사물_s2_entrance_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_floor_tile.png" alt="s2_floor_tile" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_floor_tile</span>
-            <a class="download-btn" href="assets/JP_사물_s2_floor_tile.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_hr_room_sign.png" alt="s2_hr_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_hr_room_sign</span>
-            <a class="download-btn" href="assets/JP_사물_s2_hr_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_matcha_mixer.png" alt="s2_matcha_mixer" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_matcha_mixer</span>
-            <a class="download-btn" href="assets/JP_사물_s2_matcha_mixer.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_restroom_door.png" alt="s2_restroom_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_restroom_door</span>
-            <a class="download-btn" href="assets/JP_사물_s2_restroom_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_signage.png" alt="s2_signage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_signage</span>
-            <a class="download-btn" href="assets/JP_사물_s2_signage.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_storage_rack.png" alt="s2_storage_rack" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_storage_rack</span>
-            <a class="download-btn" href="assets/JP_사물_s2_storage_rack.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_table_2seat.png" alt="s2_table_2seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_table_2seat</span>
-            <a class="download-btn" href="assets/JP_사물_s2_table_2seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_table_4seat.png" alt="s2_table_4seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_table_4seat</span>
-            <a class="download-btn" href="assets/JP_사물_s2_table_4seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_takeout_counter.png" alt="s2_takeout_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_takeout_counter</span>
-            <a class="download-btn" href="assets/JP_사물_s2_takeout_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_topping_station.png" alt="s2_topping_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_topping_station</span>
-            <a class="download-btn" href="assets/JP_사물_s2_topping_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_trash_bin.png" alt="s2_trash_bin" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_trash_bin</span>
-            <a class="download-btn" href="assets/JP_사물_s2_trash_bin.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_upgrade_room_sign.png" alt="s2_upgrade_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_upgrade_room_sign</span>
-            <a class="download-btn" href="assets/JP_사물_s2_upgrade_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_wall.png" alt="s2_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_wall</span>
-            <a class="download-btn" href="assets/JP_사물_s2_wall.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_wall_fusuma.png" alt="s2_wall_fusuma" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_wall_fusuma</span>
-            <a class="download-btn" href="assets/JP_사물_s2_wall_fusuma.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/JP_사물_s2_wall_tokonoma.png" alt="s2_wall_tokonoma" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s2_wall_tokonoma</span>
-            <a class="download-btn" href="assets/JP_사물_s2_wall_tokonoma.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        </div>
-      </section>
-      <section class="section">
-        <h2 class="section-title">KR</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_billboard.png" alt="s1_billboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_billboard</span>
-            <a class="download-btn" href="assets/KR_사물_s1_billboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_bingsu_machine.png" alt="s1_bingsu_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_bingsu_machine</span>
-            <a class="download-btn" href="assets/KR_사물_s1_bingsu_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_cashier_desk.png" alt="s1_cashier_desk" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_cashier_desk</span>
-            <a class="download-btn" href="assets/KR_사물_s1_cashier_desk.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_chair.png" alt="s1_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_chair</span>
-            <a class="download-btn" href="assets/KR_사물_s1_chair.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_dancheong_beam.png" alt="s1_deco_dancheong_beam" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_dancheong_beam</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_dancheong_beam.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_dokkaebi.png" alt="s1_deco_dokkaebi" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_dokkaebi</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_dokkaebi.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_hanji_lamp.png" alt="s1_deco_hanji_lamp" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_hanji_lamp</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_hanji_lamp.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_jangdokdae.png" alt="s1_deco_jangdokdae" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_jangdokdae</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_jangdokdae.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_lantern.png" alt="s1_deco_lantern" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_lantern</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_lantern.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_deco_onggi.png" alt="s1_deco_onggi" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_deco_onggi</span>
-            <a class="download-btn" href="assets/KR_사물_s1_deco_onggi.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_entrance_door.png" alt="s1_entrance_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_entrance_door</span>
-            <a class="download-btn" href="assets/KR_사물_s1_entrance_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_floor_tile.png" alt="s1_floor_tile" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_floor_tile</span>
-            <a class="download-btn" href="assets/KR_사물_s1_floor_tile.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_hr_room_sign.png" alt="s1_hr_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_hr_room_sign</span>
-            <a class="download-btn" href="assets/KR_사물_s1_hr_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_pat_dispenser.png" alt="s1_pat_dispenser" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_pat_dispenser</span>
-            <a class="download-btn" href="assets/KR_사물_s1_pat_dispenser.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_restroom_door.png" alt="s1_restroom_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_restroom_door</span>
-            <a class="download-btn" href="assets/KR_사물_s1_restroom_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_signage.png" alt="s1_signage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_signage</span>
-            <a class="download-btn" href="assets/KR_사물_s1_signage.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_storage_rack.png" alt="s1_storage_rack" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_storage_rack</span>
-            <a class="download-btn" href="assets/KR_사물_s1_storage_rack.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_table_2seat.png" alt="s1_table_2seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_table_2seat</span>
-            <a class="download-btn" href="assets/KR_사물_s1_table_2seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_table_4seat.png" alt="s1_table_4seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_table_4seat</span>
-            <a class="download-btn" href="assets/KR_사물_s1_table_4seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_takeout_counter.png" alt="s1_takeout_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_takeout_counter</span>
-            <a class="download-btn" href="assets/KR_사물_s1_takeout_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_topping_station.png" alt="s1_topping_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_topping_station</span>
-            <a class="download-btn" href="assets/KR_사물_s1_topping_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_trash_bin.png" alt="s1_trash_bin" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_trash_bin</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_upgrade_room_sign.png" alt="s1_upgrade_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_upgrade_room_sign</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_wall.png" alt="s1_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_wall</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/KR_사물_s1_wall_changho.png" alt="s1_wall_changho" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s1_wall_changho</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        </div>
-      </section>
-      <section class="section">
-        <h2 class="section-title">TW</h2>
-        <div class="grid">
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_billboard.png" alt="s3_billboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_billboard</span>
-            <span class="no-glb">GLB 준비 중</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_bingsu_machine.png" alt="s3_bingsu_machine" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_bingsu_machine</span>
-            <a class="download-btn" href="assets/TW_사물_s3_bingsu_machine.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_cashier_desk.png" alt="s3_cashier_desk" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_cashier_desk</span>
-            <a class="download-btn" href="assets/TW_사물_s3_cashier_desk.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_chair.png" alt="s3_chair" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_chair</span>
-            <a class="download-btn" href="assets/TW_사물_s3_chair.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_condensed_milk_dispenser.png" alt="s3_condensed_milk_dispenser" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_condensed_milk_dispenser</span>
-            <a class="download-btn" href="assets/TW_사물_s3_condensed_milk_dispenser.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_lantern_red.png" alt="s3_deco_lantern_red" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_lantern_red</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_lantern_red.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_mango_cart.png" alt="s3_deco_mango_cart" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_mango_cart</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_mango_cart.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_paper_lantern_street.png" alt="s3_deco_paper_lantern_street" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_paper_lantern_street</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_paper_lantern_street.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_steam_basket.png" alt="s3_deco_steam_basket" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_steam_basket</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_steam_basket.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_wooden_signboard.png" alt="s3_deco_wooden_signboard" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_wooden_signboard</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_wooden_signboard.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_deco_yatai_curtain.png" alt="s3_deco_yatai_curtain" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_deco_yatai_curtain</span>
-            <a class="download-btn" href="assets/TW_사물_s3_deco_yatai_curtain.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_entrance_door.png" alt="s3_entrance_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_entrance_door</span>
-            <a class="download-btn" href="assets/TW_사물_s3_entrance_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_floor_tile.png" alt="s3_floor_tile" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_floor_tile</span>
-            <a class="download-btn" href="assets/TW_사물_s3_floor_tile.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_hr_room_sign.png" alt="s3_hr_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_hr_room_sign</span>
-            <a class="download-btn" href="assets/TW_사물_s3_hr_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_mango_slicer.png" alt="s3_mango_slicer" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_mango_slicer</span>
-            <a class="download-btn" href="assets/TW_사물_s3_mango_slicer.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_restroom_door.png" alt="s3_restroom_door" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_restroom_door</span>
-            <a class="download-btn" href="assets/TW_사물_s3_restroom_door.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_signage.png" alt="s3_signage" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_signage</span>
-            <a class="download-btn" href="assets/TW_사물_s3_signage.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_storage_rack.png" alt="s3_storage_rack" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_storage_rack</span>
-            <a class="download-btn" href="assets/TW_사물_s3_storage_rack.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_table_2seat.png" alt="s3_table_2seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_table_2seat</span>
-            <a class="download-btn" href="assets/TW_사물_s3_table_2seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_table_4seat.png" alt="s3_table_4seat" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_table_4seat</span>
-            <a class="download-btn" href="assets/TW_사물_s3_table_4seat.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_takeout_counter.png" alt="s3_takeout_counter" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_takeout_counter</span>
-            <a class="download-btn" href="assets/TW_사물_s3_takeout_counter.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_topping_station.png" alt="s3_topping_station" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_topping_station</span>
-            <a class="download-btn" href="assets/TW_사물_s3_topping_station.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_trash_bin.png" alt="s3_trash_bin" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_trash_bin</span>
-            <a class="download-btn" href="assets/TW_사물_s3_trash_bin.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_upgrade_room_sign.png" alt="s3_upgrade_room_sign" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_upgrade_room_sign</span>
-            <a class="download-btn" href="assets/TW_사물_s3_upgrade_room_sign.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-media">
-            <img src="assets/TW_사물_s3_wall.png" alt="s3_wall" loading="lazy">
-          </div>
-          <div class="card-content">
-            <span class="file-name">s3_wall</span>
-            <a class="download-btn" href="assets/TW_사물_s3_wall.glb" download>GLB 다운로드</a>
-          </div>
-        </div>
-        </div>
-      </section>
-  </main>
+
+  <!-- Body (header 높이만큼 offset) -->
+  <div class="flex pt-[65px] h-screen">
+
+    <!-- Sidebar (fixed) -->
+    <aside class="fixed top-[65px] left-0 w-60 h-[calc(100vh-65px)] bg-background border-r border-border overflow-y-auto p-5 flex flex-col gap-6 z-10">
+
+      <!-- 검색 -->
+      <div class="space-y-2">
+        <p class="text-xs font-semibold text-muted-foreground uppercase tracking-wider">검색</p>
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input id="search" type="text" placeholder="파일명 검색..."
+            class="w-full pl-8 pr-3 py-1.5 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-foreground placeholder:text-muted-foreground">
+        </div>
+      </div>
+
+      <!-- 국가 필터 -->
+      <div class="space-y-2">
+        <p class="text-xs font-semibold text-muted-foreground uppercase tracking-wider">국가</p>
+        <div id="country-filters" class="space-y-1.5"></div>
+      </div>
+
+      <!-- 결과 + 전체 다운로드 -->
+      <div class="mt-auto space-y-3">
+        <p class="text-xs text-muted-foreground" id="result-count"></p>
+        <button id="download-all"
+          class="w-full flex items-center justify-center gap-1.5 bg-primary text-primary-foreground text-xs font-medium py-2 px-3 rounded-md hover:opacity-80 transition-opacity">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          필터 결과 전체 다운로드
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main (사이드바 너비만큼 offset) -->
+    <main class="ml-60 flex-1 overflow-y-auto p-6 bg-muted/20">
+      <div id="loading" class="flex items-center justify-center h-40 text-sm text-muted-foreground">
+        <svg class="animate-spin w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+        </svg>
+        에셋 불러오는 중...
+      </div>
+      <div id="grid" class="grid grid-cols-4 gap-4"></div>
+      <div id="empty" class="hidden text-center py-20 text-sm text-muted-foreground">검색 결과가 없습니다.</div>
+    </main>
+  </div>
+
+  <script>
+    const GITHUB_USER = "opensmartyouth-art";
+    const REPO_NAME   = "bingsu-asset-gallery";
+    const RAW_BASE    = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/main/assets`;
+    const API_BASE    = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/assets`;
+
+    let allCards = [];
+    let activeCountries = new Set(['ALL']);
+
+    async function loadAssets() {
+      try {
+        const res   = await fetch(API_BASE);
+        const files = await res.json();
+        const pngs  = files.filter(f => f.name.endsWith('.png'));
+        const glbs  = new Set(files.filter(f => f.name.endsWith('.glb')).map(f => f.name));
+
+        allCards = pngs.map(f => {
+          const name    = f.name.replace('.png', '');
+          const country = name.startsWith('COMMON') ? 'COMMON' : name.split('_')[0];
+          return {
+            name, country,
+            imgUrl: `${RAW_BASE}/${f.name}`,
+            glbUrl: glbs.has(f.name.replace('.png', '.glb'))
+              ? `${RAW_BASE}/${f.name.replace('.png', '.glb')}`
+              : null,
+          };
+        });
+
+        buildFilters();
+        renderCards();
+        document.getElementById('loading').classList.add('hidden');
+      } catch(e) {
+        document.getElementById('loading').textContent = '불러오기 실패: ' + e.message;
+      }
+    }
+
+    function buildFilters() {
+      const countries = ['ALL', ...new Set(allCards.map(c => c.country))].sort();
+      const wrap = document.getElementById('country-filters');
+      wrap.innerHTML = '';
+      countries.forEach(c => {
+        const label = document.createElement('label');
+        label.className = 'flex items-center gap-2 cursor-pointer text-sm hover:text-foreground text-muted-foreground py-0.5';
+        label.innerHTML = `
+          <input type="checkbox" class="country-cb w-4 h-4 rounded" value="${c}" ${c === 'ALL' ? 'checked' : ''}>
+          <span>${c === 'ALL' ? '전체' : c}</span>`;
+        wrap.appendChild(label);
+      });
+
+      document.querySelectorAll('.country-cb').forEach(cb => {
+        cb.addEventListener('change', () => {
+          if (cb.value === 'ALL') {
+            activeCountries = cb.checked ? new Set(['ALL']) : new Set();
+            document.querySelectorAll('.country-cb').forEach(b => { if (b.value !== 'ALL') b.checked = false; });
+          } else {
+            document.querySelector('.country-cb[value="ALL"]').checked = false;
+            activeCountries.delete('ALL');
+            cb.checked ? activeCountries.add(cb.value) : activeCountries.delete(cb.value);
+          }
+          renderCards();
+        });
+      });
+    }
+
+    function renderCards() {
+      const q        = document.getElementById('search').value.toLowerCase();
+      const grid     = document.getElementById('grid');
+      const empty    = document.getElementById('empty');
+      grid.innerHTML = '';
+
+      const filtered = allCards.filter(c => {
+        const matchName    = c.name.toLowerCase().includes(q);
+        const matchCountry = activeCountries.has('ALL') || activeCountries.has(c.country);
+        return matchName && matchCountry;
+      });
+
+      const count = filtered.length;
+      document.getElementById('result-count').textContent = `${count}개 에셋`;
+      document.getElementById('header-count').textContent = `${count}개`;
+      empty.classList.toggle('hidden', count > 0);
+
+      filtered.forEach(c => {
+        const dlBtn = c.glbUrl
+          ? `<a href="${c.glbUrl}" download
+               class="flex items-center justify-center gap-1 w-full bg-primary text-primary-foreground text-xs font-medium py-1.5 rounded-md hover:opacity-80 transition-opacity">
+               <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+               </svg>
+               GLB 다운로드
+             </a>`
+          : `<span class="flex items-center justify-center w-full border border-input text-muted-foreground text-xs py-1.5 rounded-md">준비 중</span>`;
+
+        const card = document.createElement('div');
+        card.className = 'card bg-card border border-border rounded-lg overflow-hidden';
+        card.innerHTML = `
+          <div class="aspect-square bg-muted/50 overflow-hidden">
+            <img src="${c.imgUrl}" alt="${c.name}" loading="lazy" class="w-full h-full object-contain p-3">
+          </div>
+          <div class="p-3 space-y-2">
+            <span class="text-[10px] font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">${c.country}</span>
+            <p class="text-xs font-medium text-card-foreground break-all leading-snug">${c.name}</p>
+            ${dlBtn}
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    document.getElementById('search').addEventListener('input', renderCards);
+
+    document.getElementById('download-all').addEventListener('click', () => {
+      const q = document.getElementById('search').value.toLowerCase();
+      const targets = allCards.filter(c => {
+        const matchName    = c.name.toLowerCase().includes(q);
+        const matchCountry = activeCountries.has('ALL') || activeCountries.has(c.country);
+        return matchName && matchCountry && c.glbUrl;
+      });
+      if (!targets.length) { alert('다운로드할 GLB 파일이 없습니다.'); return; }
+      targets.forEach((c, i) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = c.glbUrl; a.download = c.name + '.glb'; a.click();
+        }, i * 300);
+      });
+    });
+
+    loadAssets();
+  </script>
 </body>
 </html>

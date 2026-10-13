@@ -155,7 +155,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   gap: var(--space-4);
 }
 
@@ -227,17 +227,30 @@ body {
   flex: 1;
   margin: 0;
   color: var(--color-gray-700);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-4);
+  line-height: var(--line-height-text);
   word-break: break-all;
 }
 
-.asset-card__download {
+/* 카드 안 글자는 최소 15px — 디자인 시스템 Tag·Button(sm)은 12px 라 카드 안에서만 키운다 */
+.asset-card .ds-tag {
+  height: var(--size-6);
+}
+
+.asset-card .ds-tag__label {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-5);
+}
+
+.asset-card .asset-card__download {
   width: 100%;
+  height: var(--size-8);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-5);
   text-decoration: none;
 }
 
-.asset-card__download--disabled {
+.asset-card .asset-card__download--disabled {
   cursor: default;
 }

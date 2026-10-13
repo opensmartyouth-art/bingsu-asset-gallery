@@ -1,0 +1,16 @@
+/*
+ * Foundation / Breakpoints (node 6:51) · Containers (node 6:110)
+ * 브레이크포인트는 Figma 값(em)이다. CSS 변수는 @media 안에서 쓸 수 없어 문서·JS 참조용이다.
+ */
+:root {
+  --breakpoint-sm: 30em; /* 480px */
+  --breakpoint-md: 48em; /* 768px */
+  --breakpoint-lg: 62em; /* 992px */
+  --breakpoint-xl: 80em; /* 1280px */
+  --breakpoint-2xl: 96em; /* 1536px */
+
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}

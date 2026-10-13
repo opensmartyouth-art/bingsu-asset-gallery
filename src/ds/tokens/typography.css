@@ -1,0 +1,225 @@
+/*
+ * Foundation / Typography — Figma Typography (node 1:708)
+ * 폰트는 Figma 문서의 Inter 대신 Pretendard 를 쓴다(컴포넌트와 같음).
+ * 글자 크기 이름(xs~7xl)은 Chakra 크기 이름이고, 7xl(72px)은 Heading Large 4xl 에만 쓰인다.
+ * 클래스 이름은 Figma 텍스트 스타일 이름을 따른다
+ *   component-text/*, component-heading-large/*, component-heading-small/*
+ */
+:root {
+  --font-family-body: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-7xl: 4.5rem; /* 72px */
+
+  /* 글자 크기에 곱하는 행간 (Text·Heading 스타일) */
+  --line-height-none: 1;
+  --line-height-heading: 1.2;
+  --line-height-heading-relaxed: 1.33;
+  --line-height-text: 1.5;
+
+  /*
+   * 고정(px) 행간. 컴포넌트 스타일(text-sm/lineHeight-5/font-semibold 등)이 쓴다.
+   * 숫자는 4px 단위: 3.5 = 14px, 4 = 16px, 5 = 20px.
+   */
+  --line-height-3-5: 0.875rem;
+  --line-height-4: 1rem;
+  --line-height-5: 1.25rem;
+}
+
+/* Text: Regular 400, 행간 1.5 */
+.ds-text-xs {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-md {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-2xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-3xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-4xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-5xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+.ds-text-6xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text);
+}
+
+/* Heading Large: Bold 700 (lg · xl · 2xl 브레이크포인트용) */
+.ds-heading-large-xs {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-large-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-large-md {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-large-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-large-xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-large-2xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+}
+
+.ds-heading-large-3xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+}
+
+.ds-heading-large-4xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-7xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+}
+
+/* Heading Small: Bold 700 (md · sm 브레이크포인트용) */
+.ds-heading-small-xs {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-small-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-small-md {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-small-lg {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-relaxed);
+}
+
+.ds-heading-small-xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading-relaxed);
+}
+
+.ds-heading-small-2xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.ds-heading-small-3xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+}
+
+.ds-heading-small-4xl {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+}

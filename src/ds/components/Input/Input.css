@@ -1,0 +1,27 @@
+.ds-input-group {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ds-input {
+  flex: 1 0 0;
+  box-sizing: border-box;
+  min-width: 1px;
+  height: var(--size-8);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  /* Figma 의 테두리는 안쪽에 그려진다 */
+  box-shadow: inset 0 0 0 var(--border-width-sm) var(--color-gray-200);
+  background: var(--color-white);
+  color: var(--color-gray-700);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: normal;
+}
+
+.ds-input::placeholder {
+  color: var(--color-gray-400);
+}

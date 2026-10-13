@@ -1,0 +1,28 @@
+/*
+ * Foundation tokens — Figma "Chakra UI Figma Kit (Community)" 가 기준이다.
+ * 이름은 Figma 변수(blue/500 → --color-blue-500)를 따른다.
+ * 컴포넌트는 이 파일 하나만 불러온다.
+ */
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./radii.css";
+@import "./shadows.css";
+@import "./layout.css";
+
+/* Foundation 페이지에는 없고 컴포넌트에서만 쓰는 값 */
+:root {
+  /* size */
+  --size-5: 1.25rem; /* 20px */
+  --size-6: 1.5rem; /* 24px */
+  --size-7: 1.75rem; /* 28px */
+  --size-8: 2rem; /* 32px */
+  --size-10: 2.5rem; /* 40px */
+  --size-16: 4rem; /* 64px */
+
+  /* 자간: Figma 스타일 letterSpacing-wide (0.3px) */
+  --letter-spacing-wide: 0.3px;
+
+  /* border */
+  --border-width-sm: 1px;
+}

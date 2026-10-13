@@ -1,0 +1,97 @@
+.ds-page-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--space-8);
+  /* Figma 의 아래 선은 안쪽에 그려져 높이(64 · 80)에 영향이 없다 */
+  box-shadow: inset 0 calc(var(--border-width-sm) * -1) 0 0 var(--color-gray-100);
+  background: var(--color-white);
+  font-family: var(--font-family-body);
+}
+
+.ds-page-header--default {
+  height: var(--size-16);
+}
+
+.ds-page-header--profile {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.ds-page-header__back {
+  display: block;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ds-page-header__back img,
+.ds-page-header__icon {
+  display: block;
+}
+
+.ds-page-header__content {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  min-width: 1px;
+}
+
+.ds-page-header__content--default {
+  gap: var(--space-3);
+}
+
+.ds-page-header__content--profile {
+  gap: var(--space-4);
+}
+
+.ds-page-header__texts {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ds-page-header__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ds-page-header__title {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--color-gray-800);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.75rem; /* 28px */
+  white-space: nowrap;
+}
+
+.ds-page-header__description {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-4);
+  white-space: nowrap;
+}
+
+/* profile 타입은 설명이 제목 아래로 내려가며 14/20 */
+.ds-page-header--profile .ds-page-header__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-5);
+}
+
+.ds-page-header__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: var(--space-2-5);
+}

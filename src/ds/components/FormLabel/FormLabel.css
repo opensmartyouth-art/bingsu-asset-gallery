@@ -1,0 +1,69 @@
+.ds-form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  width: 100%;
+  font-family: var(--font-family-body);
+}
+
+.ds-form-label__icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.ds-form-label__contents {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  gap: var(--space-1-5);
+  min-width: 1px;
+}
+
+.ds-form-label__text,
+.ds-form-label__required {
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-5);
+  white-space: nowrap;
+}
+
+.ds-form-label__text {
+  color: var(--color-gray-400);
+}
+
+.ds-form-label__required {
+  color: var(--color-red-500);
+}
+
+/* 화면에는 보이지 않고 스크린 리더만 읽는다 */
+.ds-form-label__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ds-form-label__right-slot {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+
+.ds-form-label__icon-button {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ds-form-label__icon-button img {
+  display: block;
+}

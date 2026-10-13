@@ -1,0 +1,243 @@
+/* 갤러리 전용 스타일. 값은 모두 디자인 시스템 토큰(src/ds/tokens)을 쓴다. */
+:root {
+  --header-height: var(--size-16);
+  --sidebar-width: 15rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-gray-800);
+  font-family: var(--font-family-body);
+}
+
+/* ───── Header ───── */
+.app-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+}
+
+.app-header__emoji {
+  display: block;
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+}
+
+.app-header__count {
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-5);
+}
+
+/* ───── Sidebar ───── */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: var(--sidebar-width);
+  padding: var(--space-5);
+  overflow-y: auto;
+  border-right: var(--border-width-sm) solid var(--color-gray-100);
+  background: var(--color-white);
+}
+
+.sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+}
+
+.sidebar__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.sidebar__count {
+  margin: 0;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-4);
+}
+
+.sidebar__download {
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  align-items: center;
+}
+
+.search svg {
+  position: absolute;
+  top: 50%;
+  left: var(--space-2-5);
+  transform: translateY(-50%);
+  color: var(--color-gray-400);
+  pointer-events: none;
+}
+
+.search .ds-input {
+  padding-left: var(--space-8);
+}
+
+/* ───── Checkbox ───── */
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-0-5) 0;
+  cursor: pointer;
+}
+
+/* 진짜 input 은 화면 밖으로 두고 키보드·스크린 리더용으로만 쓴다 */
+.checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.checkbox__input:focus-visible + .ds-checkbox-control {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.checkbox__label {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-5);
+}
+
+.checkbox:hover .checkbox__label {
+  color: var(--color-gray-800);
+}
+
+/* ───── Main / Grid ───── */
+.main {
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  padding: calc(var(--header-height) + var(--space-6)) var(--space-6) var(--space-6);
+  background: var(--color-gray-50);
+}
+
+.main__message {
+  margin: 0;
+  padding: var(--space-10) 0;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--space-4);
+}
+
+.section-2d {
+  margin-top: var(--space-8);
+}
+
+.section-2d__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+  color: var(--color-gray-800);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-5);
+}
+
+.section-2d__style {
+  padding: 0 var(--space-2);
+  border: var(--border-width-sm) solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  color: var(--color-gray-500);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ───── Asset card (디자인 시스템 Card 의 표면 스타일을 따름) ───── */
+.asset-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  outline: var(--border-width-sm) solid var(--color-black-alpha-100);
+  outline-offset: calc(var(--border-width-sm) * -1);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: var(--shadow-base);
+  transition: box-shadow 0.15s, outline-color 0.15s;
+}
+
+.asset-card:hover {
+  outline-color: var(--color-teal-400);
+  box-shadow: var(--shadow-lg);
+}
+
+.asset-card__image {
+  aspect-ratio: 1;
+  background: var(--color-gray-50);
+}
+
+.asset-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-3);
+  object-fit: contain;
+}
+
+.asset-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.asset-card__name {
+  flex: 1;
+  margin: 0;
+  color: var(--color-gray-700);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-4);
+  word-break: break-all;
+}
+
+.asset-card__download {
+  width: 100%;
+  text-decoration: none;
+}
+
+.asset-card__download--disabled {
+  cursor: default;
+}
